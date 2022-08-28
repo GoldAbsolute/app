@@ -1,1 +1,1 @@
-web: bin/go-app
+web: bin/test-app-1488
