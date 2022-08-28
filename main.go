@@ -5,9 +5,15 @@ import (
 	"net/http"
 )
 
+port := os.Getenv("PORT")
+
+if port == "" {
+		log.Fatal("$PORT must be set")
+	}
+
 func main() {
 	http.HandleFunc("/", indexRoute)
-	_ = http.ListenAndServe(":80", nil)
+	_ = http.ListenAndServe(":" + port, nil)
 }
 
 func indexRoute(w http.ResponseWriter, _ *http.Request) {
