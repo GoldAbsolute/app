@@ -2,18 +2,20 @@ package main
 
 import (
 	"html/template"
+	"log"
 	"net/http"
+	"os"
 )
 
 func main() {
 	port := os.Getenv("PORT")
 
 	if port == "" {
-			log.Fatal("$PORT must be set")
-		}
-	
+		log.Fatal("$PORT must be set")
+	}
+
 	http.HandleFunc("/", indexRoute)
-	_ = http.ListenAndServe(":" + port, nil)
+	_ = http.ListenAndServe(":"+port, nil)
 }
 
 func indexRoute(w http.ResponseWriter, _ *http.Request) {
